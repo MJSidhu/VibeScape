@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #1D1D1D;
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #121212;
+}
+
+.navbar .logo {
+    text-align: center;
+    align-items: center;
+    display: flex   ;
+    
+    color: white;
+}
+
+.navbar .logo h1{
+
+    font-size: 30px;
+    font-weight: 800;
+    font-weight: bolder;
+
+}
+
+
+.navbar .logo span {
+    color: #a855f7;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+    color: #a855f7;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 19px;
+    color: #a855f7;
+    font-weight: 700;
+    padding-right: 30px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+.menu a img{
+    padding-right: 15px;
+}
+
+#profile_logo{
+    width: 38px;
+}
+
+.search-box {
+    margin-left: 100px;
+    background: #222;
+    border-radius: 30px;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    color: #fff;
+}
+.search-box img{
+    padding: 1px 8px;
+    width: 45px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100%;
+    padding-left: 18px;
+    font-size: 15px;
+}
+
+.category {
+    padding: 20px 40px;
+}
+
+.category h2 {
+    margin-bottom: 15px;
+}
+
+.podcast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+}
+
+.podcast-card {
+    background-color: #181818;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.podcast-card img {
+    width: 70%;
+    border-radius: 10px;
+}
+
+.podcast-card p {
+    margin-top: 8px;
+    font-size: 14px;
+}
