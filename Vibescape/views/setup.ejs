@@ -28,21 +28,27 @@
 
 <br><br>
     <section class="category">
-        <h2>Podcasts in the Spotlight</h2>
+        <h2>SONGS FOR YOU</h2>
 <br>
-        <div class="podcast-grid">
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 1"><p>Top Global India</p></div>
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 2"><p>Top Global India</p></div>
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 3"><p>Top Global India</p></div>
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 4"><p>Top Global India</p></div>
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 5"><p>Top Global India</p></div>
-            <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 6"><p>Top Global India</p></div>
-            
-        </div>
+         <div id="songs">
+        <% songs.forEach(song => { %>
+            <div class="songDiv">
+                <h3><%= song.title %></h3>
+                <% if (song.youtubeUrl) { %>
+                    <iframe width="200" height="150"
+                        src="<%= song.youtubeUrl.split('?')[0] %>" 
+                        frameborder="0" allowfullscreen>
+                    </iframe>
+                <% } else { %>
+                    <p>Error: Video URL not found.</p>
+                <% } %>                
+            </div>
+        <% }); %>
+    </div>
     </section>
 <br>
 
-    <section class="category">
+    <!-- <section class="category">
         <h2>Podcasts in the Spotlight</h2>
 <br>
         <div class="podcast-grid">
@@ -53,6 +59,6 @@
             <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 11"><p>Top Global India</p></div>
             <div class="podcast-card"><img src="/images/card5img.jpeg" alt="Podcast 12"><p>Top Global India</p></div>
         </div>
-    </section>
+    </section> -->
 </body>
 </html>
