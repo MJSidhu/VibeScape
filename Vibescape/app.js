@@ -2,8 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import path from "path";
+import bcrypt from "bcrypt";
 import { fileURLToPath } from "url";
 import songRoutes from "./routes/songRoutes.js";
+import users from "./models/userModel.js"
 
 const app = express();
 const port=3000;
@@ -25,6 +27,7 @@ mongoose.connect("mongodb+srv://kaushal:kaushal05@cluster0.yl36jsb.mongodb.net/v
 
 app.get("/", (req,res)=>{
     res.render("index")
+
 })
 app.get("/index", (req,res)=>{
     res.render("index")
@@ -35,6 +38,44 @@ app.get("/login", (req,res)=>{
 app.get("/signup", (req,res)=>{
     res.render("signup")
 })
+
+app.post("/login", async (req,res)=>{
+    try{
+    const {username,password}=req.body;
+    const user = await users.findOne({username}); 
+    if(!user){
+      return res.send("user is not found");
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if(!isMatch){
+        return res.render("login");
+    }
+    res.render("index");
+}
+catch(err){
+    console.log("erorr");
+    res.send("error occured");
+}
+});
+
+app.post("/signup" ,async (req,res)=>{
+    const {username, password} = req.body;
+    try{
+        const existingUser=await users.findOne({username})
+        if(existingUser){
+            return res.send("user already exists")
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new users({ username, password: hashedPassword });
+        await newUser.save();
+        res.redirect("login");
+    }
+    catch(error){
+        console.log("error")
+        res.send("error occured while siging up")
+    }   
+});
+
 app.use("/songs", songRoutes);
 
 app.listen(port,function (){
